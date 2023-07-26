@@ -8,6 +8,7 @@ pandas = "*"
 matplotlib = "*"
 seaborn = "*"
 librosa = "*"
+ipython = "*"
 
 [dev-packages]
 
