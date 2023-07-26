@@ -14,4 +14,3 @@ from itertools import cycle
 sns.set_theme(style="white", palette=None)
 color_pal = plt.rcParams["axes.prop_cycle"].by_key()["color"]
 color_cycle = cycle(plt.rcParams["axes.prop_cycle"].by_key()["color"])
-train_data = glob("./data/train_data/*.wav")
