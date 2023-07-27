@@ -16,7 +16,7 @@ color_pal = plt.rcParams["axes.prop_cycle"].by_key()["color"]
 color_cycle = cycle(plt.rcParams["axes.prop_cycle"].by_key()["color"])
 
 # get the train audio files
-train = glob("../data/train_data/*.wav")
+train = glob("./data/train_data/*.wav")[:10]
 
 # loading the audio files with librosa (converting to numbers)
 loaded_train = []
@@ -29,3 +29,5 @@ for data in loaded_train:
     D = librosa.stft(data)
     S_db = librosa.amplitude_to_db(np.abs(D), ref=np.max)
     transformed_train.append(S_db)
+
+print(transformed_train)
