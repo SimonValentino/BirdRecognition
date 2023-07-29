@@ -9,7 +9,7 @@ from tensorflow.keras.preprocessing.sequence import pad_sequences
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.neighbors import KNeighborsRegressor
-
+from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
 
 from glob import glob
@@ -28,7 +28,7 @@ color_pal = plt.rcParams["axes.prop_cycle"].by_key()["color"]
 color_cycle = cycle(plt.rcParams["axes.prop_cycle"].by_key()["color"])
 
 # Getting all the audio files together for training
-audio_files = glob("../data/train_data/*.wav")
+audio_files = glob("data/train_data/*.wav")
 
 # Converting the audio into numbers
 data = {
@@ -45,7 +45,7 @@ for file in audio_files:
   
 # Inital data collection  
 X = pd.DataFrame(data)
-y = pd.read_csv("../data/train_labels.csv")
+y = pd.read_csv("data/train_labels.csv")
 
 # Ordering the data so that the audio data lines up with the csv train labels
 merged = X.merge(y, on="itemid", how="inner")
@@ -68,7 +68,7 @@ X_train, X_test, y_train, y_test = train_test_split(X_padded_df, y, test_size=0.
 # DecisionTreeClassifier()
 
 # Regression
-# KNeighborsRegressor
+# KNeighborsRegressor (Gives % accuracy of the odds it is a bird or not)
 
 model = KNeighborsClassifier()
 model.fit(X_train, y_train)
