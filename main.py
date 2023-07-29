@@ -7,6 +7,9 @@ import seaborn as sns
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 
 from sklearn.tree import DecisionTreeClassifier
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.neighbors import KNeighborsRegressor
+
 from sklearn.metrics import accuracy_score
 
 from glob import glob
@@ -59,10 +62,18 @@ X_padded_df = pd.DataFrame(X_padded)
 X_train, X_test, y_train, y_test = train_test_split(X_padded_df, y, test_size=0.2)
 
 # Training model and predicting
-model = DecisionTreeClassifier()
+
+# Classification
+# KNeighborsClassifier()
+# DecisionTreeClassifier()
+
+# Regression
+# KNeighborsRegressor
+
+model = KNeighborsClassifier()
 model.fit(X_train, y_train)
 y_pred = model.predict(X_test)
 
 # Accuracy
 acc = accuracy_score(y_test, y_pred)
-print(acc)
+print("Training model accuracy:", acc)
