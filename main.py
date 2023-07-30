@@ -105,5 +105,3 @@ X_padded_df = pd.DataFrame(X_padded)
 y_pred = model.predict(X)
 
 # Accuracy
-acc = accuracy_score(y_test, y_pred)
-print("Training model accuracy:", acc)
