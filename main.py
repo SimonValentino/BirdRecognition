@@ -85,23 +85,23 @@ for file in audio_files:
   
 # Inital data collection  
 X = pd.DataFrame(data)
+
+# Getting the item ids for when we write teh restults to a csv later
+itemids = X["itemid"] 
+
 # Ordering the data so that the audio data lines up with the csv train labels
 # getting the data after its been ordered
 X = X["data"].to_frame()
 # Formatting the data for the model
-X_padded = pad_sequences(X["data"], padding='post', dtype='float32')
+X_padded = pad_sequences(X["data"], padding='post', dtype='float32', maxlen=X_padded_df.shape[1])
 X_padded_df = pd.DataFrame(X_padded)
-# Train test split
 
-# Training model and predicting
+# Prediction
+y_pred = model.predict(X_padded_df)
 
-# Classification
-# KNeighborsClassifier()
-# DecisionTreeClassifier()
+results_df = pd.DataFrame({
+    "itemid": itemids,
+    "hasbird_predicted": y_pred
+})
 
-# Regression
-# KNeighborsRegressor
-
-y_pred = model.predict(X)
-
-# Accuracy
+results_df.to_csv("predictions.csv", index=False)
