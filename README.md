@@ -1,5 +1,5 @@
 # BirdRecognition
-Recognizing birds based off the sound they make.
+AI model that recognizes birds based off the sound they make.
 
 # Data
 Be sure to download the data used in this project and unzip it in a data directory.
